@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FiArrowRight } from 'lucide-react'
+import { FiArrowRight } from 'react-icons/fi'
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 import logo from '../assets/logo.png'
