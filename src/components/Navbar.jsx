@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { FiMenu, FiX } from "react-icons/fi"
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from '../assets/logo.png'
 
@@ -93,7 +93,7 @@ export default function Navbar() {
             className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-white transition-colors hover:bg-white/5"
             aria-label="Toggle navigation"
           >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </header>
