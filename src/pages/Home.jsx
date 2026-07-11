@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import PageWrapper from '../components/PageWrapper'
 import logo from '../assets/logo.png'
 
-const GOLD = '#AE822B'
+const GOLD = '#FACC15'
 
 const cards = [
   { to: '/event',   icon: '🏁', title: 'The Event',   desc: "Competing in GKDC 2027, India's premier intercollegiate go-kart design and race challenge." },
@@ -14,13 +15,12 @@ const cards = [
 ]
 
 const stats = [
-  { num: '1',   suffix: '',    label: 'First-Time Participants' },
+  { num: '1',   suffix: 'ST',  label: 'Best Hyperdrive' },
+  { num: '1',   suffix: '',    label: 'Days to Build' },
   { num: '100', suffix: '%',   label: 'Student Built' },
-  { num: '25',  suffix: '+',   label: 'Team Members' },
-  { num: '6',   suffix: '',    label: 'Sub-teams' },
+  { num: '∞',   suffix: '',    label: 'Adrenaline' },
 ]
 
-// Staggered children animation
 const containerVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08 } },
@@ -31,24 +31,34 @@ const itemVariants = {
 }
 
 export default function Home() {
+  // True if this is NOT the first time Home is rendered this session
+  const isReturn = useRef(!!sessionStorage.getItem('tt_home_visited'))
+
+  useEffect(() => {
+    sessionStorage.setItem('tt_home_visited', '1')
+  }, [])
+
+  // On return visits, skip all entry animations by jumping straight to final state
+  const heroInitial    = isReturn.current ? 'show'   : 'hidden'
+  const logoInitial    = isReturn.current ? { opacity: 0.32, scale: 1 } : { opacity: 0, scale: 0.92 }
+  const logoAnimate    = { opacity: 0.32, scale: 1 }
+  const logoTransition = isReturn.current ? { duration: 0 } : { delay: 0.5, duration: 1.0 }
+
   return (
     <PageWrapper>
-      {/* HERO — transparent background so GlobalBackground shows through */}
       <section
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ background: 'transparent' }}
       >
-        {/* Logo watermark — desktop: fixed right, mobile: bottom-right smaller */}
         <motion.img
           src={logo}
           alt=""
           aria-hidden="true"
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 1.0 }}
+          initial={logoInitial}
+          animate={logoAnimate}
+          transition={logoTransition}
           style={{
             position: 'absolute',
-            // Desktop: right side, vertically centered-ish
             right: '3%',
             bottom: '8%',
             width: 'clamp(200px, 32vw, 420px)',
@@ -56,13 +66,11 @@ export default function Home() {
             filter: 'brightness(1.1) contrast(0.9)',
             userSelect: 'none',
             pointerEvents: 'none',
-            // On mobile this gets overridden by the media style below
             zIndex: 1,
           }}
           className="logo-watermark"
         />
 
-        {/* Left accent bar — fills the empty left gutter */}
         <div style={{
           position: 'absolute',
           left: 0, top: '15%', bottom: '15%',
@@ -71,7 +79,6 @@ export default function Home() {
           opacity: 0.5,
         }} />
 
-        {/* Left decorative speed lines */}
         <svg
           viewBox="0 0 180 600"
           style={{
@@ -102,33 +109,29 @@ export default function Home() {
               strokeWidth={i % 4 === 0 ? 1.5 : 0.8}
             />
           ))}
-          {/* Small vertical tick marks */}
           {[100, 200, 310, 430].map((y, i) => (
             <rect key={i} x="0" y={y} width="12" height="2" rx="1"
               fill={GOLD} opacity={0.4 - i * 0.06} />
           ))}
         </svg>
 
-        {/* Content */}
         <motion.div
           className="relative z-10 max-w-6xl mx-auto w-full px-5 sm:px-8 pb-14 pt-28 sm:pt-32"
           variants={containerVariants}
-          initial="hidden"
+          initial={heroInitial}
           animate="show"
         >
-          {/* Badge */}
           <motion.div variants={itemVariants}
             className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 mb-8"
-            style={{ borderColor: 'rgba(174,130,43,0.55)', background: 'rgba(174,130,43,0.09)' }}
+            style={{ borderColor: `${GOLD}88`, background: `${GOLD}17` }}
           >
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD }} />
             <span className="font-display font-bold tracking-[0.15em] uppercase"
               style={{ fontSize: '0.6rem', color: GOLD }}>
-              First-Time Participants · GKDC 2027
+              GKDC 2027 · First-Time Participants
             </span>
           </motion.div>
 
-          {/* Title */}
           <motion.h1
             variants={itemVariants}
             className="font-display font-bold uppercase leading-none tracking-tight"
@@ -142,7 +145,6 @@ export default function Home() {
             }}>On The Grid.</span>
           </motion.h1>
 
-          {/* Sub */}
           <motion.p variants={itemVariants}
             className="mt-4 font-body tracking-widest uppercase text-white/35"
             style={{ fontSize: '0.75rem' }}
@@ -157,12 +159,11 @@ export default function Home() {
             First-timers, full send. Building and racing through GKDC 2027.
           </motion.p>
 
-          {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mt-8">
             <Link to="/journey"
               className="inline-flex items-center gap-2 rounded-full font-display font-bold tracking-[0.1em] uppercase transition-all hover:opacity-90 hover:scale-[1.02]"
               style={{ background: GOLD, color: '#0a0a0a', padding: '0.75rem 1.5rem', fontSize: '0.75rem' }}>
-              Our Journey <FiArrowRight size={14} />
+              Follow Our Journey <FiArrowRight size={14} />
             </Link>
             <Link to="/event"
               className="inline-flex items-center gap-2 rounded-full font-display font-bold tracking-[0.1em] uppercase transition-all hover:bg-white/8"
@@ -171,7 +172,6 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             variants={itemVariants}
             className="mt-12 pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6"
@@ -193,7 +193,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Mobile logo fix: inject a style tag */}
       <style>{`
         @media (max-width: 640px) {
           .logo-watermark {
@@ -205,7 +204,6 @@ export default function Home() {
         }
       `}</style>
 
-      {/* CARDS SECTION */}
       <section className="max-w-6xl mx-auto px-5 sm:px-8 py-20" style={{ position: 'relative', zIndex: 1 }}>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
@@ -233,8 +231,8 @@ export default function Home() {
                   backdropFilter: 'blur(8px)',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = `rgba(174,130,43,0.38)`
-                  e.currentTarget.style.background = 'rgba(174,130,43,0.08)'
+                  e.currentTarget.style.borderColor = `${GOLD}61`
+                  e.currentTarget.style.background = `${GOLD}14`
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'

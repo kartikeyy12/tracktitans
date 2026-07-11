@@ -1,8 +1,60 @@
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
-import { leaders, subTeams } from '../data/team'
 
-const GOLD = '#AE822B'
+// Updated to a brighter yellow as requested
+const GOLD = '#FACC15' 
+
+const leaders = [
+  { name: 'Vivaan Wagle', role: 'Team Leader', year: '3rd Year, ME' },
+  { name: 'Prince Pal', role: 'Team Leader', year: '3rd Year, ME' },
+  { name: 'Sanchita Mahale', role: 'Team Leader', year: '2nd Year, ME' },
+  { name: 'Chaitanya Vundru', role: 'Faculty Advisor', year: 'Professor, ME' },
+]
+
+const subTeams = [
+  { 
+    icon: '⚙️', 
+    name: 'Chassis', 
+    lead: 'Prince Pal', 
+    members: [], 
+    desc: 'Chassis design and fabrication.' 
+  },
+  { 
+    icon: '🎯', 
+    name: 'Steering', 
+    lead: 'Vivaan Wagle', 
+    members: [], 
+    desc: 'Steering geometry and assembly.' 
+  },
+  { 
+    icon: '🔧', 
+    name: 'Transmission', 
+    lead: 'Piyush Mehra', 
+    members: [], 
+    desc: 'Drivetrain, gearing, and tuning.' 
+  },
+  { 
+    icon: '🛑', 
+    name: 'Braking System', 
+    lead: 'Lav Gupta', 
+    members: [], 
+    desc: 'Brake design and stopping performance.' 
+  },
+  { 
+    icon: '📊', 
+    name: 'Data & Strategy', 
+    lead: 'Vivaan Wagle, Prince Pal', 
+    members: [], 
+    desc: 'Race strategy and documentation.' 
+  },
+  { 
+    icon: '📱', 
+    name: 'Social Media', 
+    lead: 'Utkarsha Gupta', 
+    members: [], 
+    desc: 'Content, design, and online presence.' 
+  },
+]
 
 const initials = (name) => name.split(' ').map(n => n[0]).join('')
 
@@ -48,7 +100,7 @@ export default function Team() {
                 }}
               >
                 <div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center"
-                  style={{ background: 'rgba(174,130,43,0.1)', border: `1px solid rgba(174,130,43,0.22)` }}>
+                  style={{ background: `${GOLD}1A`, border: `1px solid ${GOLD}38` }}>
                   <span className="font-display font-bold" style={{ color: GOLD, fontSize: '0.8rem' }}>
                     {initials(name)}
                   </span>
@@ -78,11 +130,11 @@ export default function Team() {
                 viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.35 }}
                 className="p-5 rounded-xl transition-colors"
                 style={{ background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.06)' }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(174,130,43,0.3)'}
+                onMouseEnter={e => e.currentTarget.style.borderColor = `${GOLD}4D`}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'}
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg mb-4"
-                  style={{ background: 'rgba(174,130,43,0.1)' }}>
+                  style={{ background: `${GOLD}1A` }}>
                   {icon}
                 </div>
                 <div className="font-display font-bold tracking-[0.06em] uppercase text-white mb-1.5"

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 
-const GOLD = '#AE822B'
+// Updated to a brighter yellow as requested
+const GOLD = '#FACC15' 
 
 const phases = [
   { num: '01', name: 'Virtual Round', desc: 'CAD & cost report', status: 'active' },
@@ -12,7 +13,7 @@ const phases = [
 
 const statusMap = {
   done:     { label: 'Complete',    bg: 'rgba(34,197,94,0.08)',   color: '#4ade80',        border: 'rgba(34,197,94,0.2)' },
-  active:   { label: 'In Progress', bg: 'rgba(174,130,43,0.1)',   color: GOLD,             border: 'rgba(174,130,43,0.35)' },
+  active:   { label: 'In Progress', bg: 'rgba(250,204,21,0.1)',   color: GOLD,             border: 'rgba(250,204,21,0.35)' },
   upcoming: { label: 'Upcoming',    bg: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.25)', border: 'rgba(255,255,255,0.1)' },
 }
 
@@ -31,12 +32,13 @@ export default function Event() {
           <p className="font-body tracking-[0.2em] uppercase mb-3" style={{ fontSize: '0.65rem', color: GOLD }}>
             The Competition
           </p>
+          {/* Updated year to 2027 */}
           <h1 className="font-display font-bold uppercase text-white leading-none"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}>
-            GKDC<br />2025
+            GKDC<br />2027
           </h1>
           <p className="mt-4 font-body text-white/40 max-w-lg leading-relaxed" style={{ fontSize: '0.85rem' }}>
-            Go Kart Design Challenge,India's most rigorous student motorsport competition.
+            Go Kart Design Challenge, India's most rigorous student motorsport competition.
           </p>
         </div>
       </div>
@@ -52,11 +54,12 @@ export default function Event() {
               style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)' }}>
               What is<br /><span style={{ color: GOLD }}>GKDC?</span>
             </h2>
+            {/* Updated description text to match PDF */}
             <p className="font-body text-white/45 leading-relaxed mb-4" style={{ fontSize: '0.85rem' }}>
-            India's top student motorsport challenge — build a go-kart from scratch, then race it.
+              The Go Kart Design Challenge is an ISNEE Motorsports initiative that tasks student teams with designing, fabricating, and racing a single-seater go-kart from scratch. Teams are evaluated across engineering design, cost efficiency, and on-track performance.
             </p>
             <p className="font-body text-white/45 leading-relaxed mb-6" style={{ fontSize: '0.85rem' }}>
-              For Track Titans, GKDC 2025 marks NIT Goa's first-ever entry into competitive collegiate motorsport, built entirely by students.
+              For Track Titans, GKDC 2027 marks NIT Goa's first-ever entry into competitive collegiate motorsport, built entirely by students.
             </p>
           </motion.div>
 
@@ -77,7 +80,7 @@ export default function Event() {
                   style={{ background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
                   <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                    style={{ background: 'rgba(174,130,43,0.1)', border: `1px solid rgba(174,130,43,0.28)` }}>
+                    style={{ background: `${GOLD}1A`, border: `1px solid ${GOLD}47` }}>
                     <span className="font-display font-bold" style={{ fontSize: '0.58rem', color: GOLD }}>{num}</span>
                   </div>
                   <div className="flex-1 min-w-0">

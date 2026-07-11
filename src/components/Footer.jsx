@@ -26,7 +26,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="font-body tracking-widest uppercase text-white/20" style={{ fontSize: '0.6rem' }}>
-              NIT Goa, GKDC 2025 Debut Season
+              NIT Goa, GKDC 2027 Debut Season
             </p>
           </div>
 
@@ -47,10 +47,10 @@ export default function Footer() {
         <div className="mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2"
           style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <p className="font-body text-white/20" style={{ fontSize: '0.6rem' }}>
-            © 2025 Track Titans, NIT Goa. All rights reserved.
+            © 2027 Track Titans, NIT Goa. All rights reserved.
           </p>
           <p className="font-body text-white/20" style={{ fontSize: '0.6rem' }}>
-            Built for <span style={{ color: 'rgba(174,130,43,0.6)' }}>GKDC 2025</span>
+            Built for <span style={{ color: 'rgba(174,130,43,0.6)' }}>GKDC 2027</span>
           </p>
         </div>
       </div>

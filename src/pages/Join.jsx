@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiInstagram, FiMail, FiSend } from 'react-icons/fi' 
+import { FiInstagram, FiMail, FiSend } from 'react-icons/fi'
 import PageWrapper from '../components/PageWrapper'
 
-const GOLD = '#AE822B'
+const GOLD = '#F0B429'   // ← brighter, more vivid yellow-gold
 
 const inputStyle = {
   width: '100%',
@@ -18,8 +18,16 @@ const inputStyle = {
   colorScheme: 'dark',
 }
 
+// ─── Put logo PNGs in:  public/sponsors/solidworks.png
+//                        public/sponsors/ansys.png
+// They are referenced as /sponsors/solidworks.png (no import needed).
+const SPONSORS = [
+  { name: 'SolidWorks', src: '/sponsors/solidworks.svg' },
+  { name: 'ANSYS',      src: '/sponsors/ansys.svg'      },
+]
+
 export default function Join() {
-  const [form, setForm] = useState({ name: '', email: '' })
+  const [form, setForm]           = useState({ name: '', email: '' })
   const [submitted, setSubmitted] = useState(false)
 
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
@@ -31,53 +39,91 @@ export default function Join() {
 
   return (
     <PageWrapper>
-      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: 'transparent' }}>
-        <div className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: `repeating-linear-gradient(-45deg, ${GOLD} 0px, ${GOLD} 1px, transparent 1px, transparent 60px)`,
-          opacity: 0.025,
-        }} />
+      {/* ── Hero ── */}
+      <div
+        className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden"
+        style={{ background: 'transparent' }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `repeating-linear-gradient(-45deg, ${GOLD} 0px, ${GOLD} 1px, transparent 1px, transparent 60px)`,
+            opacity: 0.025,
+          }}
+        />
         <div className="max-w-6xl mx-auto relative z-10">
-          <p className="font-body tracking-[0.2em] uppercase mb-3" style={{ fontSize: '0.65rem', color: GOLD }}>
+          <p
+            className="font-body tracking-[0.2em] uppercase mb-3"
+            style={{ fontSize: '0.65rem', color: GOLD }}
+          >
             Get Involved
           </p>
-          <h1 className="font-display font-bold uppercase text-white leading-none"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}>
+          <h1
+            className="font-display font-bold uppercase text-white leading-none"
+            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
+          >
             Join<br />The Team
           </h1>
-          <p className="mt-4 font-body text-white/40 max-w-lg leading-relaxed" style={{ fontSize: '0.85rem' }}>
+          <p
+            className="mt-4 font-body text-white/40 max-w-lg leading-relaxed"
+            style={{ fontSize: '0.85rem' }}
+          >
             We're looking for students serious about motorsport engineering, business, or media.
           </p>
         </div>
       </div>
 
+      {/* ── Form + Side panel ── */}
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-14">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+
           {/* Form */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {!submitted ? (
               <div>
-                <h2 className="font-display font-bold uppercase text-white tracking-tight mb-6" style={{ fontSize: '1.1rem' }}>
+                <h2
+                  className="font-display font-bold uppercase text-white tracking-tight mb-6"
+                  style={{ fontSize: '1.1rem' }}
+                >
                   Express Interest
                 </h2>
                 <div className="flex flex-col gap-4">
                   <div>
-                    <label className="block font-body tracking-widest uppercase text-white/28 mb-1.5" style={{ fontSize: '0.58rem' }}>
+                    <label
+                      className="block font-body tracking-widest uppercase text-white/28 mb-1.5"
+                      style={{ fontSize: '0.58rem' }}
+                    >
                       Your Name
                     </label>
-                    <input type="text" value={form.name} onChange={set('name')}
-                      placeholder="Raj Kumar" style={inputStyle}
-                      onFocus={e => e.target.style.borderColor = 'rgba(174,130,43,0.5)'}
-                      onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                    <input
+                      type="text"
+                      value={form.name}
+                      onChange={set('name')}
+                      placeholder="Raj Kumar"
+                      style={inputStyle}
+                      onFocus={e => e.target.style.borderColor = `rgba(240,180,41,0.5)`}
+                      onBlur={e  => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                     />
                   </div>
                   <div>
-                    <label className="block font-body tracking-widest uppercase text-white/28 mb-1.5" style={{ fontSize: '0.58rem' }}>
+                    <label
+                      className="block font-body tracking-widest uppercase text-white/28 mb-1.5"
+                      style={{ fontSize: '0.58rem' }}
+                    >
                       College Email
                     </label>
-                    <input type="email" value={form.email} onChange={set('email')}
-                      placeholder="you@nitgoa.ac.in" style={inputStyle}
-                      onFocus={e => e.target.style.borderColor = 'rgba(174,130,43,0.5)'}
-                      onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                    <input
+                      type="email"
+                      value={form.email}
+                      onChange={set('email')}
+                      placeholder="you@nitgoa.ac.in"
+                      style={inputStyle}
+                      onFocus={e => e.target.style.borderColor = `rgba(240,180,41,0.5)`}
+                      onBlur={e  => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                     />
                   </div>
                   <button
@@ -91,17 +137,29 @@ export default function Join() {
               </div>
             ) : (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center text-center py-14"
               >
-                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-                  style={{ background: 'rgba(174,130,43,0.1)', border: `1px solid rgba(174,130,43,0.3)` }}>
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
+                  style={{
+                    background: 'rgba(240,180,41,0.1)',
+                    border: `1px solid rgba(240,180,41,0.3)`,
+                  }}
+                >
                   <span className="text-2xl">🏁</span>
                 </div>
-                <div className="font-display font-bold uppercase text-white tracking-wide mb-2" style={{ fontSize: '1.1rem' }}>
+                <div
+                  className="font-display font-bold uppercase text-white tracking-wide mb-2"
+                  style={{ fontSize: '1.1rem' }}
+                >
                   You're in!
                 </div>
-                <p className="font-body text-white/38 leading-relaxed max-w-xs" style={{ fontSize: '0.8rem' }}>
+                <p
+                  className="font-body text-white/38 leading-relaxed max-w-xs"
+                  style={{ fontSize: '0.8rem' }}
+                >
                   We'll reach out to {form.name.split(' ')[0]} at {form.email} shortly.
                 </p>
               </motion.div>
@@ -110,30 +168,59 @@ export default function Join() {
 
           {/* Right panel */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5 }}
             className="flex flex-col gap-4"
           >
-            <div className="p-5 rounded-xl" style={{ border: `1px solid rgba(174,130,43,0.22)`, background: 'rgba(174,130,43,0.05)' }}>
-              <div className="font-display font-bold uppercase tracking-wide mb-2" style={{ fontSize: '0.85rem', color: GOLD }}>
+            <div
+              className="p-5 rounded-xl"
+              style={{
+                border: `1px solid rgba(240,180,41,0.22)`,
+                background: 'rgba(240,180,41,0.05)',
+              }}
+            >
+              <div
+                className="font-display font-bold uppercase tracking-wide mb-2"
+                style={{ fontSize: '0.85rem', color: GOLD }}
+              >
                 NIT Goa Students Only
               </div>
-              <p className="font-body text-white/38 leading-relaxed" style={{ fontSize: '0.78rem' }}>
-                Membership is currently open to students enrolled at NIT Goa. Sponsors and industry partners, reach us via email directly.
+              <p
+                className="font-body text-white/38 leading-relaxed"
+                style={{ fontSize: '0.78rem' }}
+              >
+                Membership is currently open to students enrolled at NIT Goa.
+                Sponsors and industry partners, reach us via email directly.
               </p>
             </div>
 
             <div>
-              <p className="font-body tracking-[0.2em] uppercase text-white/18 mb-3" style={{ fontSize: '0.58rem' }}>Follow Us</p>
+              <p
+                className="font-body tracking-[0.2em] uppercase text-white/18 mb-3"
+                style={{ fontSize: '0.58rem' }}
+              >
+                Follow Us
+              </p>
               <div className="flex flex-col gap-2.5">
                 {[
                   { icon: <FiInstagram size={15} />, text: 'Instagram', href: 'https://instagram.com' },
-                  { icon: <FiMail size={15} />, text: 'tracktitansracingnitg@nitgoa.ac.in', href: 'mailto:tracktitansracingnitg@nitgoa.ac.in' },
+                  {
+                    icon: <FiMail size={15} />,
+                    text: 'tracktitansracingnitg@nitgoa.ac.in',
+                    href: 'mailto:tracktitansracingnitg@nitgoa.ac.in',
+                  },
                 ].map(({ icon, text, href }) => (
-                  <a key={text} href={href}
+                  <a
+                    key={text}
+                    href={href}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-colors"
-                    style={{ background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.06)' }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(174,130,43,0.3)'}
+                    style={{
+                      background: 'rgba(28,28,28,0.75)',
+                      backdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(255,255,255,0.06)',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(240,180,41,0.3)'}
                     onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'}
                   >
                     <span style={{ color: GOLD }}>{icon}</span>
@@ -143,21 +230,90 @@ export default function Join() {
               </div>
             </div>
 
-            <div className="p-5 rounded-xl" style={{ background: '#1c1c1c', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <div className="font-display font-bold uppercase tracking-wide text-white mb-2" style={{ fontSize: '0.85rem' }}>
+            <div
+              className="p-5 rounded-xl"
+              style={{ background: '#1c1c1c', border: '1px solid rgba(255,255,255,0.06)' }}
+            >
+              <div
+                className="font-display font-bold uppercase tracking-wide text-white mb-2"
+                style={{ fontSize: '0.85rem' }}
+              >
                 Sponsorship
               </div>
-              <p className="font-body text-white/38 leading-relaxed mb-3" style={{ fontSize: '0.78rem' }}>
+              <p
+                className="font-body text-white/38 leading-relaxed mb-3"
+                style={{ fontSize: '0.78rem' }}
+              >
                 Interested in sponsoring Track Titans?
               </p>
-              <a href="mailto:tracktitansracingnitg@nitgoa.ac.in"
+              <a
+                href="mailto:tracktitansracingnitg@nitgoa.ac.in"
                 className="inline-flex items-center gap-1.5 font-body font-semibold tracking-widest uppercase transition-all hover:gap-2.5"
-                style={{ fontSize: '0.7rem', color: GOLD }}>
+                style={{ fontSize: '0.7rem', color: GOLD }}
+              >
                 Get in touch <FiMail size={11} />
               </a>
             </div>
           </motion.div>
         </div>
+
+        {/* ── Sponsor Logos ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-16"
+        >
+          {/* divider */}
+          <div
+            className="mb-8"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          />
+
+          <p
+            className="font-body tracking-[0.2em] uppercase text-center mb-6"
+            style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.25)' }}
+          >
+            Our Technology Partners
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+            {SPONSORS.map(({ name, src }) => (
+              <div
+                key={name}
+                className="flex items-center justify-center rounded-xl px-8 py-5 transition-all"
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  minWidth: '10rem',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = `rgba(240,180,41,0.25)`
+                  e.currentTarget.style.background   = 'rgba(240,180,41,0.05)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
+                  e.currentTarget.style.background   = 'rgba(255,255,255,0.03)'
+                }}
+              >
+                <img
+                  src={src}
+                  alt={name}
+                  style={{
+                    height: '2rem',          // 32 px — adjust as needed
+                    width: 'auto',
+                    maxWidth: '8rem',
+                    objectFit: 'contain',
+                    filter: 'brightness(0) invert(1)',   // makes any logo white
+                    opacity: 0.65,
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+                  onMouseLeave={e => e.currentTarget.style.opacity = '0.65'}
+                />
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </PageWrapper>
   )
