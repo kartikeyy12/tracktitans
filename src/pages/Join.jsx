@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Mail, Send } from 'lucide-react'
-import { Instagram } from 'lucide-react'
+import { Instagram } from 'lucide-react/dist/esm/icons/instagram.js'
 import PageWrapper from '../components/PageWrapper'
 
 const GOLD = '#AE822B'
