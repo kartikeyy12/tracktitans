@@ -16,7 +16,7 @@ const milestones = [
 export default function Journey() {
   return (
     <PageWrapper>
-      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: '#0a0a0a' }}>
+      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: 'transparent' }}>
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: `repeating-linear-gradient(-45deg, ${GOLD} 0px, ${GOLD} 1px, transparent 1px, transparent 60px)`,
           opacity: 0.025,

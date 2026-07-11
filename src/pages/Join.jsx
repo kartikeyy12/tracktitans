@@ -40,7 +40,7 @@ export default function Join() {
 
   return (
     <PageWrapper>
-      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: '#0a0a0a' }}>
+      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: 'transparent' }}>
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: `repeating-linear-gradient(-45deg, ${GOLD} 0px, ${GOLD} 1px, transparent 1px, transparent 60px)`,
           opacity: 0.025,
@@ -155,7 +155,7 @@ export default function Join() {
                 ].map(({ icon, text, href }) => (
                   <a key={text} href={href}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-colors"
-                    style={{ background: '#1c1c1c', border: '1px solid rgba(255,255,255,0.06)' }}
+                    style={{ background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.06)' }}
                     onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(174,130,43,0.3)'}
                     onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'}
                   >

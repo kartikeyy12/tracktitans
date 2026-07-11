@@ -26,7 +26,7 @@ export default function Event() {
   return (
     <PageWrapper>
       {/* Header */}
-      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: '#0a0a0a' }}>
+      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: 'transparent' }}>
         <div className="absolute inset-0 pointer-events-none" style={diagonalBg} />
         <div className="max-w-6xl mx-auto relative z-10">
           <p className="font-body tracking-[0.2em] uppercase mb-3" style={{ fontSize: '0.65rem', color: GOLD }}>
@@ -82,7 +82,7 @@ export default function Event() {
                   initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.35 }}
                   className="flex items-start gap-3 p-3.5 rounded-xl"
-                  style={{ background: '#1c1c1c', border: '1px solid rgba(255,255,255,0.06)' }}
+                  style={{ background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
                   <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
                     style={{ background: 'rgba(174,130,43,0.1)', border: `1px solid rgba(174,130,43,0.28)` }}>

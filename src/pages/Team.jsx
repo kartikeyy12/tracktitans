@@ -2,14 +2,14 @@ import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 import { leaders, subTeams } from '../data/team'
 
-const GOLD = '#C8960C'
+const GOLD = '#AE822B'
 
 const initials = (name) => name.split(' ').map(n => n[0]).join('')
 
 export default function Team() {
   return (
     <PageWrapper>
-      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: '#0a0a0a' }}>
+      <div className="relative pt-28 pb-12 px-5 sm:px-8 overflow-hidden" style={{ background: 'transparent' }}>
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: `repeating-linear-gradient(-45deg, ${GOLD} 0px, ${GOLD} 1px, transparent 1px, transparent 60px)`,
           opacity: 0.025,
@@ -42,13 +42,13 @@ export default function Team() {
                 viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.4 }}
                 className="p-5 rounded-xl text-center"
                 style={{
-                  background: '#1c1c1c',
+                  background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)',
                   border: '1px solid rgba(255,255,255,0.06)',
                   borderTop: `2px solid ${GOLD}`,
                 }}
               >
                 <div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center"
-                  style={{ background: 'rgba(200,150,12,0.1)', border: `1px solid rgba(200,150,12,0.22)` }}>
+                  style={{ background: 'rgba(174,130,43,0.1)', border: `1px solid rgba(174,130,43,0.22)` }}>
                   <span className="font-display font-bold" style={{ color: GOLD, fontSize: '0.8rem' }}>
                     {initials(name)}
                   </span>
@@ -77,12 +77,12 @@ export default function Team() {
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.35 }}
                 className="p-5 rounded-xl transition-colors"
-                style={{ background: '#1c1c1c', border: '1px solid rgba(255,255,255,0.06)' }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(200,150,12,0.3)'}
+                style={{ background: 'rgba(28,28,28,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.06)' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(174,130,43,0.3)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'}
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg mb-4"
-                  style={{ background: 'rgba(200,150,12,0.1)' }}>
+                  style={{ background: 'rgba(174,130,43,0.1)' }}>
                   {icon}
                 </div>
                 <div className="font-display font-bold tracking-[0.06em] uppercase text-white mb-1.5"

@@ -1,3 +1,4 @@
+// PageWrapper.jsx — transparent background so GlobalBackground shows through on every page
 import { motion } from 'framer-motion'
 
 export default function PageWrapper({ children }) {
@@ -7,6 +8,7 @@ export default function PageWrapper({ children }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.28, ease: 'easeOut' }}
+      style={{ background: 'transparent', position: 'relative', zIndex: 1 }}
     >
       {children}
     </motion.div>
