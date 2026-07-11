@@ -5,10 +5,10 @@ import PageWrapper from '../components/PageWrapper'
 const GOLD = '#C8960C' 
 
 const leaders = [
-  { name: 'Vivaan Wagle', role: 'Team Leader', year: '3rd Year, ME' },
-  { name: 'Prince Pal', role: 'Team Leader', year: '3rd Year, ME' },
-  { name: 'Sanchita Mahale', role: 'Team Leader', year: '2nd Year, ME' },
-  { name: 'Chaitanya Vundru', role: 'Faculty Advisor', year: 'Professor, ME' },
+  { name: 'Vivaan Wagle', role: 'Team Leader', year: '3rd Year, MCE' },
+  { name: 'Prince Pal', role: 'Team Leader', year: '3rd Year, MCE' },
+  { name: 'Sanchita Mahale', role: 'Team Leader', year: '3rd Year, MCE' },
+  { name: 'Chaitanya Vundru', role: 'Faculty Advisor', year: 'Professor, MCE' },
 ]
 
 const subTeams = [
