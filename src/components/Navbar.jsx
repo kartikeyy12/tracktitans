@@ -52,6 +52,7 @@ export default function Navbar() {
             <span className="font-display font-bold tracking-[0.12em] uppercase text-white"
               style={{ fontSize: '0.8rem' }}>
               Track<span style={{ color: GOLD }}>Titans</span>
+              <span className="text-white/40">-NITGoa</span>
             </span>
           </Link>
 
@@ -139,7 +140,7 @@ export default function Navbar() {
               </nav>
               <div className="mt-auto pb-10 text-center font-body tracking-widest uppercase text-white/15"
                 style={{ fontSize: '0.6rem' }}>
-                NIT Goa · GKDC 2025
+                NIT Goa · GKDC 2027
               </div>
             </div>
           </motion.div>
