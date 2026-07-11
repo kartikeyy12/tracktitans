@@ -11,7 +11,6 @@ import Team from './pages/Team'
 import Journey from './pages/Journey'
 import Join from './pages/Join'
 
-// True black-and-white checkered flag wipe
 const CHECKER_BW = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='16' height='16' fill='%23ffffff'/%3E%3Crect x='16' y='0' width='16' height='16' fill='%23000000'/%3E%3Crect x='0' y='16' width='16' height='16' fill='%23000000'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23ffffff'/%3E%3C/svg%3E`
 
 function CheckeredWipe({ isVisible }) {
@@ -95,20 +94,24 @@ export default function App() {
   useEffect(() => {
     const already = sessionStorage.getItem('tt_intro_shown')
     if (already) {
+      // Already seen this session — skip intro, show site immediately
       setIntroComplete(true)
     } else {
       setIntroShown(true)
-      sessionStorage.setItem('tt_intro_shown', '1')
+      // Don't mark as shown until the animation actually completes
     }
   }, [])
 
-  const handleIntroDone = () => setIntroComplete(true)
+  const handleIntroComplete = () => {
+    sessionStorage.setItem('tt_intro_shown', '1')
+    setIntroComplete(true)
+  }
 
   return (
     <BrowserRouter>
       <GlobalBackground />
       {introShown && !introComplete && (
-        <IntroLoader onDone={handleIntroDone} />
+        <IntroLoader onComplete={handleIntroComplete} />
       )}
       <motion.div
         initial={{ opacity: 0 }}
