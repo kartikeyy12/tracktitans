@@ -154,7 +154,7 @@ export default function Home() {
             className="mt-3 font-body text-white/45 max-w-sm leading-relaxed"
             style={{ fontSize: '0.85rem' }}
           >
-            Full send. Building and racing a go-kart from scratch for GKDC 2027.
+            First-timers, full send. Building and racing through GKDC 2027.
           </motion.p>
 
           {/* CTAs */}

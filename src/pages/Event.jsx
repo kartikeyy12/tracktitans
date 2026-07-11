@@ -4,11 +4,10 @@ import PageWrapper from '../components/PageWrapper'
 const GOLD = '#AE822B'
 
 const phases = [
-  { num: '01', name: 'Registration & Eligibility', desc: 'Team registration with GKDC governing body and document verification.', status: 'done' },
-  { num: '02', name: 'Design Submission',           desc: 'CAD models, FEA analysis reports, and cost report submission.', status: 'done' },
-  { num: '03', name: 'Virtual Technical Round',     desc: 'Online design presentation and judging panel evaluation.', status: 'active' },
-  { num: '04', name: 'Physical Scrutineering',      desc: 'On-site safety inspection, weight check, and technical compliance.', status: 'upcoming' },
-  { num: '05', name: 'Race Day',                    desc: 'Endurance run, acceleration, skid pad, and autocross events.', status: 'upcoming' },
+  { num: '01', name: 'Virtual Round', desc: 'CAD & cost report', status: 'active' },
+  { num: '02', name: 'Fabrication', desc: 'Building the kart', status: 'upcoming' },
+  { num: '03', name: 'Tech Inspection', desc: 'Safety scrutiny', status: 'upcoming' },
+  { num: '04', name: 'Race Day', desc: 'Speed & endurance', status: 'upcoming' },
 ]
 
 const statusMap = {
@@ -54,18 +53,11 @@ export default function Event() {
               What is<br /><span style={{ color: GOLD }}>GKDC?</span>
             </h2>
             <p className="font-body text-white/45 leading-relaxed mb-4" style={{ fontSize: '0.85rem' }}>
-              The Go Kart Design Challenge is an SAE India initiative that tasks student teams with designing, fabricating, and racing a single-seater go-kart from scratch. Teams are evaluated across engineering design, cost efficiency, and on-track performance.
+            India's top student motorsport challenge — build a go-kart from scratch, then race it.
             </p>
             <p className="font-body text-white/45 leading-relaxed mb-6" style={{ fontSize: '0.85rem' }}>
               For Track Titans, GKDC 2025 marks NIT Goa's first-ever entry into competitive collegiate motorsport, built entirely by students.
             </p>
-            <div className="pl-4 py-2 rounded-r-lg" style={{
-              borderLeft: `2px solid ${GOLD}`, background: 'rgba(174,130,43,0.06)',
-            }}>
-              <p className="font-body text-white/60 leading-relaxed" style={{ fontSize: '0.8rem' }}>
-                <span style={{ color: GOLD, fontWeight: 600 }}>Organised by SAE India</span>, the same body behind BAJA SAE and Formula Bharat.
-              </p>
-            </div>
           </motion.div>
 
           {/* Right: phases */}
@@ -104,27 +96,6 @@ export default function Event() {
               )
             })}
           </motion.div>
-        </div>
-
-        {/* Snapshot */}
-        <div className="pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <p className="font-body tracking-[0.2em] uppercase text-white/25 mb-5" style={{ fontSize: '0.6rem' }}>
-            Competition Snapshot
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { label: 'Organiser', value: 'SAE India' },
-              { label: 'Format',    value: 'Design + Race' },
-              { label: 'Venue',     value: 'TBA' },
-              { label: 'Category',  value: 'Collegiate' },
-            ].map(({ label, value }) => (
-              <div key={label} className="p-4 rounded-xl"
-                style={{ background: '#1c1c1c', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="font-body tracking-widest uppercase text-white/22 mb-2" style={{ fontSize: '0.58rem' }}>{label}</div>
-                <div className="font-display font-bold uppercase tracking-wide text-white" style={{ fontSize: '0.82rem' }}>{value}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </PageWrapper>

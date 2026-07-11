@@ -1,18 +1,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, Mail, Send } from 'lucide-react'
+import { ExternalLink, Mail, Send, Instagram } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
 
 const GOLD = '#AE822B'
-
-const roles = [
-  { value: 'chassis',     label: 'Chassis & Fabrication' },
-  { value: 'engine',      label: 'Engine & Drivetrain' },
-  { value: 'suspension',  label: 'Suspension & Brakes' },
-  { value: 'electronics', label: 'Electronics & Safety' },
-  { value: 'business',    label: 'Business & Finance' },
-  { value: 'media',       label: 'Marketing & Media' },
-]
 
 const inputStyle = {
   width: '100%',
@@ -28,7 +19,7 @@ const inputStyle = {
 }
 
 export default function Join() {
-  const [form, setForm] = useState({ name: '', email: '', role: '' })
+  const [form, setForm] = useState({ name: '', email: '' })
   const [submitted, setSubmitted] = useState(false)
 
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
@@ -89,20 +80,6 @@ export default function Join() {
                       onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                     />
                   </div>
-                  <div>
-                    <label className="block font-body tracking-widest uppercase text-white/28 mb-1.5" style={{ fontSize: '0.58rem' }}>
-                      Area of Interest
-                    </label>
-                    <select value={form.role} onChange={set('role')} style={inputStyle}
-                      onFocus={e => e.target.style.borderColor = 'rgba(174,130,43,0.5)'}
-                      onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
-                    >
-                      <option value="" style={{ background: '#1c1c1c' }}>Select a role...</option>
-                      {roles.map(r => (
-                        <option key={r.value} value={r.value} style={{ background: '#1c1c1c' }}>{r.label}</option>
-                      ))}
-                    </select>
-                  </div>
                   <button
                     onClick={handleSubmit}
                     className="mt-2 w-full flex items-center justify-center gap-2 rounded-full font-display font-bold tracking-[0.1em] uppercase transition-opacity hover:opacity-90"
@@ -150,8 +127,8 @@ export default function Join() {
               <p className="font-body tracking-[0.2em] uppercase text-white/18 mb-3" style={{ fontSize: '0.58rem' }}>Follow Us</p>
               <div className="flex flex-col gap-2.5">
                 {[
-                  { icon: <Instagram size={15} />, text: '@tracktitans.nitgoa', href: '#' },
-                  { icon: <Mail size={15} />, text: 'tracktitans@nitgoa.ac.in', href: 'mailto:tracktitans@nitgoa.ac.in' },
+                  { icon: <Instagram size={15} />, text: 'Instagram', href: 'https://instagram.com' },
+                  { icon: <Mail size={15} />, text: 'tracktitansracingnitg@nitgoa.ac.in', href: 'mailto:tracktitansracingnitg@nitgoa.ac.in' },
                 ].map(({ icon, text, href }) => (
                   <a key={text} href={href}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-colors"
@@ -171,9 +148,9 @@ export default function Join() {
                 Sponsorship
               </div>
               <p className="font-body text-white/38 leading-relaxed mb-3" style={{ fontSize: '0.78rem' }}>
-                Interested in sponsoring Track Titans? We offer branding, technical partnership, and event visibility.
+                Interested in sponsoring Track Titans?
               </p>
-              <a href="mailto:tracktitans@nitgoa.ac.in"
+              <a href="mailto:tracktitansracingnitg@nitgoa.ac.in"
                 className="inline-flex items-center gap-1.5 font-body font-semibold tracking-widest uppercase transition-all hover:gap-2.5"
                 style={{ fontSize: '0.7rem', color: GOLD }}>
                 Get in touch <Mail size={11} />

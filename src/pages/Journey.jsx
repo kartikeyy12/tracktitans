@@ -4,13 +4,32 @@ import PageWrapper from '../components/PageWrapper'
 const GOLD = '#AE822B'
 
 const milestones = [
-  { date: 'Sep 2024', title: 'Team Formation',         desc: 'Track Titans officially formed at NIT Goa. Core leadership assembled, mission defined.',                                  done: true },
-  { date: 'Oct 2024', title: 'Conceptual Design',      desc: 'Initial CAD models, load calculations, and chassis concept finalised in SolidWorks.',                                    done: true },
-  { date: 'Nov 2024', title: 'GKDC Registration',      desc: 'Official registration submitted to SAE India for GKDC 2025. Team eligibility confirmed.',                                 done: true },
-  { date: 'Jan 2025', title: 'Design Report Submitted', desc: 'Full design report with FEA simulations, cost report, and CAD package delivered to GKDC.',                              done: true },
-  { date: 'Mar 2025', title: 'Virtual Technical Round', desc: 'Live presentation to GKDC judges covering design decisions, FEA analysis, and innovation points.', done: false, active: true },
-  { date: 'Apr 2025', title: 'Fabrication Begins',      desc: 'Frame cutting, welding, and component sourcing begins in the NIT Goa workshop.',                                        done: false },
-  { date: 'Jun 2025', title: 'Race Day',                desc: 'Track Titans takes the kart to the event, scrutineering, track sessions, and the results that matter.',                done: false },
+  {
+    title: 'Team Formation',
+    desc: 'Track Titans NIT Goa forms to take on GKDC for the first time.',
+    done: true,
+  },
+  {
+    title: 'Registration & Virtual Round',
+    desc: 'Preparing our design report, CAD, and cost analysis.',
+    done: false,
+    active: true,
+  },
+  {
+    title: 'Fabrication Phase',
+    desc: 'In the workshop building the kart from scratch.',
+    done: false,
+  },
+  {
+    title: 'Technical Inspection',
+    desc: 'Judges evaluate safety, compliance, and build quality.',
+    done: false,
+  },
+  {
+    title: 'Race Day — GKDC 2027',
+    desc: 'The kart hits the track. Everything comes down to this.',
+    done: false,
+  },
 ]
 
 export default function Journey() {
@@ -30,7 +49,7 @@ export default function Journey() {
             Our<br />Journey
           </h1>
           <p className="mt-4 font-body text-white/40 max-w-lg leading-relaxed" style={{ fontSize: '0.85rem' }}>
-            Every milestone from day one to race day.
+            Our road to GKDC 2027, step by step.
           </p>
         </div>
       </div>
@@ -44,7 +63,7 @@ export default function Journey() {
           }} />
 
           <div className="flex flex-col gap-9 pl-8">
-            {milestones.map(({ date, title, desc, done, active }, i) => (
+            {milestones.map(({ title, desc, done, active }, i) => (
               <motion.div
                 key={title}
                 initial={{ opacity: 0, x: -14 }} whileInView={{ opacity: 1, x: 0 }}
@@ -69,16 +88,16 @@ export default function Journey() {
                   )}
                 </div>
 
-                <div className="font-display font-bold tracking-[0.18em] uppercase mb-1.5 flex items-center gap-2"
-                  style={{ fontSize: '0.6rem', color: GOLD }}>
-                  {date}
-                  {active && (
+                {active && (
+                  <div className="font-display font-bold tracking-[0.18em] uppercase mb-1.5 flex items-center gap-2"
+                    style={{ fontSize: '0.6rem', color: GOLD }}>
                     <span className="px-1.5 py-0.5 rounded font-display font-bold tracking-widest uppercase"
                       style={{ fontSize: '0.5rem', background: 'rgba(174,130,43,0.15)', border: `1px solid rgba(174,130,43,0.4)`, color: GOLD }}>
                       Now
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
+                
                 <div className="font-display font-bold tracking-wide uppercase text-white mb-2"
                   style={{ fontSize: '0.88rem' }}>
                   {title}
