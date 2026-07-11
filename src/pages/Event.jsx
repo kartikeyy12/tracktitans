@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 
 // Updated to a brighter yellow as requested
-const GOLD = '#FACC15' 
+const GOLD = '#C8960C' 
 
 const phases = [
   { num: '01', name: 'Virtual Round', desc: 'CAD & cost report', status: 'active' },
@@ -13,7 +13,7 @@ const phases = [
 
 const statusMap = {
   done:     { label: 'Complete',    bg: 'rgba(34,197,94,0.08)',   color: '#4ade80',        border: 'rgba(34,197,94,0.2)' },
-  active:   { label: 'In Progress', bg: 'rgba(250,204,21,0.1)',   color: GOLD,             border: 'rgba(250,204,21,0.35)' },
+  active:   { label: 'In Progress', bg: 'rgba(200,150,12,0.1)',   color: GOLD,             border: 'rgba(200,150,12,0.35)' },
   upcoming: { label: 'Upcoming',    bg: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.25)', border: 'rgba(255,255,255,0.1)' },
 }
 

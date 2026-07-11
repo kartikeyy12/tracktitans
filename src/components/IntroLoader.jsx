@@ -121,7 +121,7 @@ export default function IntroLoader({ onComplete }) {
             const fillW = Math.max(0, Math.min(barTW, kartX + kartW - barSX - kartW * 0.05));
             if (fillW > 0) {
               const gr = ctx.createLinearGradient(barSX, 0, barSX + fillW, 0);
-              gr.addColorStop(0, "#8B6520"); gr.addColorStop(0.7, "#AE822B"); gr.addColorStop(1, "#F0D080");
+              gr.addColorStop(0, "#8B6520"); gr.addColorStop(0.7, "#C8960C"); gr.addColorStop(1, "#F0D080");
               ctx.save();
               ctx.globalAlpha = fade;
               ctx.fillStyle = gr;
@@ -137,7 +137,7 @@ export default function IntroLoader({ onComplete }) {
             }
           } else {
             const gr = ctx.createLinearGradient(barSX, 0, barEX, 0);
-            gr.addColorStop(0, "#8B6520"); gr.addColorStop(1, "#AE822B");
+            gr.addColorStop(0, "#8B6520"); gr.addColorStop(1, "#C8960C");
             ctx.save();
             ctx.globalAlpha = fade;
             ctx.fillStyle = gr;

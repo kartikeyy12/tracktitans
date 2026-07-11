@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { to: '/journey', label: 'Journey' },
 ]
 
-const GOLD = '#AE822B'
+const GOLD = '#C8960C'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -65,7 +65,7 @@ export default function Navbar() {
                 end={to === '/'}
                 className={({ isActive }) =>
                   `font-body font-semibold tracking-[0.12em] uppercase transition-colors duration-200 ${
-                    isActive ? 'text-[#AE822B]' : 'text-white/40 hover:text-white'
+                    isActive ? 'text-[#C8960C]' : 'text-white/40 hover:text-white'
                   }`
                 }
                 style={{ fontSize: '0.7rem' }}
@@ -129,7 +129,7 @@ export default function Navbar() {
                     onClick={close}
                     className={({ isActive }) =>
                       `py-5 text-center font-display font-bold tracking-[0.15em] uppercase transition-colors border-b ${
-                        isActive ? 'text-[#AE822B]' : 'text-white/60 hover:text-white'
+                        isActive ? 'text-[#C8960C]' : 'text-white/60 hover:text-white'
                       }`
                     }
                     style={{ fontSize: '0.85rem', borderColor: 'rgba(255,255,255,0.05)' }}

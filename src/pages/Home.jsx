@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
 import PageWrapper from '../components/PageWrapper'
 import logo from '../assets/logo.png'
 
-const GOLD = '#FACC15'
+const GOLD = '#C8960C'
 
 const cards = [
   { to: '/event',   icon: '🏁', title: 'The Event',   desc: "Competing in GKDC 2027, India's premier intercollegiate go-kart design and race challenge." },

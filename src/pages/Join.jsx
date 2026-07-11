@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FiInstagram, FiMail, FiSend } from 'react-icons/fi'
 import PageWrapper from '../components/PageWrapper'
 
-const GOLD = '#F0B429'   // ← brighter, more vivid yellow-gold
+const GOLD = '#C8960C'   // ← brighter, more vivid yellow-gold
 
 const inputStyle = {
   width: '100%',

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 
-const GOLD = '#AE822B'
+const GOLD = '#C8960C'
 
 const milestones = [
   {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
-const GOLD = '#AE822B'
+const GOLD = '#C8960C'
 const BG = '#0a0a0a'
 
 const links = [

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 
 // Updated to a brighter yellow as requested
-const GOLD = '#FACC15' 
+const GOLD = '#C8960C' 
 
 const leaders = [
   { name: 'Vivaan Wagle', role: 'Team Leader', year: '3rd Year, ME' },
