@@ -88,41 +88,45 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [introShown, setIntroShown] = useState(false)
+  const [showIntro, setShowIntro]       = useState(false)
   const [introComplete, setIntroComplete] = useState(false)
 
   useEffect(() => {
     const already = sessionStorage.getItem('tt_intro_shown')
     if (already) {
-      // Already seen this session — skip intro, show site immediately
       setIntroComplete(true)
     } else {
-      setIntroShown(true)
-      // Don't mark as shown until the animation actually completes
+      setShowIntro(true)
     }
   }, [])
 
   const handleIntroComplete = () => {
     sessionStorage.setItem('tt_intro_shown', '1')
+    // Start fading in the homepage at the same moment IntroLoader starts fading out
     setIntroComplete(true)
   }
 
   return (
     <BrowserRouter>
       <GlobalBackground />
-      {introShown && !introComplete && (
+
+      {showIntro && (
         <IntroLoader onComplete={handleIntroComplete} />
       )}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: introComplete ? 1 : 0 }}
-        transition={{ duration: 0.35 }}
-        style={{ position: 'relative', zIndex: 1 }}
+
+      {/* Homepage fades in from black — matches the IntroLoader's black canvas exactly */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          opacity: introComplete ? 1 : 0,
+          transition: introComplete ? 'opacity 0.45s ease-out' : 'none',
+        }}
       >
         <Navbar />
         <AnimatedRoutes />
         <Footer />
-      </motion.div>
+      </div>
     </BrowserRouter>
   )
 }

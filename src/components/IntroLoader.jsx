@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function IntroLoader({ onComplete }) {
   const canvasRef = useRef(null);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -24,14 +25,14 @@ export default function IntroLoader({ onComplete }) {
       const FPS = 60;
       const T = (s) => Math.round(s * FPS);
 
-      const IDLE_END   = T(0.8);
-      const BAR_FADE   = T(0.6);
-      const BAR_END    = T(1.2);
-      const LAUNCH_END = T(2.2);
-      const FLAG_START = T(2.1);
-      const FLAG_END   = T(3.2);
-      const HOLD_END   = T(3.5);
-      const TOTAL      = T(3.6);
+      const IDLE_END    = T(0.8);
+      const BAR_FADE    = T(0.6);
+      const BAR_END     = T(1.2);
+      const LAUNCH_END  = T(2.2);
+      const FLAG_START  = T(2.1);
+      const FLAG_END    = T(3.2);
+      const HOLD_END    = T(3.6);
+      const TOTAL       = T(3.7);
 
       const particles = [];
 
@@ -127,7 +128,6 @@ export default function IntroLoader({ onComplete }) {
               ctx.beginPath();
               ctx.roundRect(barSX, barY, fillW, barHt, barHt / 2);
               ctx.fill();
-              // Glint
               ctx.globalAlpha = fade * 0.9;
               const gg = ctx.createRadialGradient(barSX + fillW, barY + barHt / 2, 0, barSX + fillW, barY + barHt / 2, 14);
               gg.addColorStop(0, "rgba(255,230,120,0.9)"); gg.addColorStop(1, "rgba(255,230,120,0)");
@@ -162,8 +162,7 @@ export default function IntroLoader({ onComplete }) {
             ctx.strokeStyle = "#ffffff";
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(lx1, ly); ctx.lineTo(lx2, ly);
-            ctx.stroke();
+            ctx.moveTo(lx1, ly); ctx.lineTo(lx2, ly); ctx.stroke();
           }
           ctx.restore();
         }
@@ -210,7 +209,7 @@ export default function IntroLoader({ onComplete }) {
           }
         }
 
-        // Hold black after flag
+        // Black hold
         if (frame >= FLAG_END && frame < HOLD_END) {
           ctx.fillStyle = "#000000";
           ctx.fillRect(0, 0, W, H);
@@ -220,7 +219,10 @@ export default function IntroLoader({ onComplete }) {
         if (frame < TOTAL) {
           animId = requestAnimationFrame(render);
         } else {
+          // Tell App to start fading in the homepage FIRST
           onComplete && onComplete();
+          // Then fade out this canvas overlay over 400ms
+          setFadeOut(true);
         }
       }
 
@@ -228,15 +230,32 @@ export default function IntroLoader({ onComplete }) {
     };
 
     kartImg.onerror = () => {
-      // Image failed to load — don't block the site
       onComplete && onComplete();
+      setFadeOut(true);
     };
 
     return () => cancelAnimationFrame(animId);
   }, []);
 
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 9999, background: "#000", overflow: "hidden" }}>
+    <div
+      onTransitionEnd={(e) => {
+        // Once our fade-out is done, remove from DOM entirely
+        if (e.propertyName === "opacity" && fadeOut) {
+          e.currentTarget.style.display = "none";
+        }
+      }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        background: "#000",
+        overflow: "hidden",
+        opacity: fadeOut ? 0 : 1,
+        transition: fadeOut ? "opacity 0.4s ease-in" : "none",
+        pointerEvents: fadeOut ? "none" : "auto",
+      }}
+    >
       <canvas ref={canvasRef} style={{ display: "block", width: "100%", height: "100%" }} />
     </div>
   );
