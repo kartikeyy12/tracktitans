@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { FiArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 import logo from '../assets/logo.png'
@@ -162,7 +162,7 @@ export default function Home() {
             <Link to="/journey"
               className="inline-flex items-center gap-2 rounded-full font-display font-bold tracking-[0.1em] uppercase transition-all hover:opacity-90 hover:scale-[1.02]"
               style={{ background: GOLD, color: '#0a0a0a', padding: '0.75rem 1.5rem', fontSize: '0.75rem' }}>
-              Our Journey <ArrowRight size={14} />
+              Our Journey <FiArrowRight size={14} />
             </Link>
             <Link to="/event"
               className="inline-flex items-center gap-2 rounded-full font-display font-bold tracking-[0.1em] uppercase transition-all hover:bg-white/8"
@@ -252,7 +252,7 @@ export default function Home() {
                 </p>
                 <div className="mt-4 flex items-center gap-1.5 font-body font-semibold tracking-widest uppercase transition-all group-hover:gap-2.5"
                   style={{ fontSize: '0.62rem', color: GOLD }}>
-                  Explore <ArrowRight size={11} />
+                  Explore <FiArrowRight size={11} />
                 </div>
               </Link>
             </motion.div>
