@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-// Import these explicitly by name
-import { Instagram, Mail, Send } from 'lucide-react' 
+import { FiInstagram, FiMail, FiSend } from 'react-icons/fi' 
 import PageWrapper from '../components/PageWrapper'
 
 const GOLD = '#AE822B'
@@ -86,7 +85,7 @@ export default function Join() {
                     className="mt-2 w-full flex items-center justify-center gap-2 rounded-full font-display font-bold tracking-[0.1em] uppercase transition-opacity hover:opacity-90"
                     style={{ background: GOLD, color: '#0a0a0a', padding: '0.9rem', fontSize: '0.75rem' }}
                   >
-                    Submit Interest <Send size={13} />
+                    Submit Interest <FiSend size={13} />
                   </button>
                 </div>
               </div>
@@ -128,8 +127,8 @@ export default function Join() {
               <p className="font-body tracking-[0.2em] uppercase text-white/18 mb-3" style={{ fontSize: '0.58rem' }}>Follow Us</p>
               <div className="flex flex-col gap-2.5">
                 {[
-                  { icon: <Instagram size={15} />, text: 'Instagram', href: 'https://instagram.com' },
-                  { icon: <Mail size={15} />, text: 'tracktitansracingnitg@nitgoa.ac.in', href: 'mailto:tracktitansracingnitg@nitgoa.ac.in' },
+                  { icon: <FiInstagram size={15} />, text: 'Instagram', href: 'https://instagram.com' },
+                  { icon: <FiMail size={15} />, text: 'tracktitansracingnitg@nitgoa.ac.in', href: 'mailto:tracktitansracingnitg@nitgoa.ac.in' },
                 ].map(({ icon, text, href }) => (
                   <a key={text} href={href}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-colors"
@@ -154,7 +153,7 @@ export default function Join() {
               <a href="mailto:tracktitansracingnitg@nitgoa.ac.in"
                 className="inline-flex items-center gap-1.5 font-body font-semibold tracking-widest uppercase transition-all hover:gap-2.5"
                 style={{ fontSize: '0.7rem', color: GOLD }}>
-                Get in touch <Mail size={11} />
+                Get in touch <FiMail size={11} />
               </a>
             </div>
           </motion.div>
